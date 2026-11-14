@@ -1,0 +1,19 @@
+# Local development profile: `--spring.profiles.active=local` (see scripts/run-local.sh).
+# Synthetic data only. Values may be overridden by environment variables.
+spring:
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://127.0.0.1:${LOCAL_DB_PORT:5433}/recozai}
+    username: ${DATABASE_USER:recozai}
+    password: ${DATABASE_PASSWORD:recozai-local}   # no default: generated into .secrets/local by scripts/run-local.sh
+server:
+  address: 127.0.0.1
+  port: ${PORT:8080}
+app:
+  stage: development
+  security-epoch: ${SECURITY_EPOCH:local-dev-1}
+  restore-gate: ${RESTORE_GATE:OPEN}   # fresh local DB, nothing to reconcile
+  secure-cookies: false            # http://localhost has no TLS
+  custodian-public-key: ${CUSTODIAN_PUBLIC_KEY:}
+logging:
+  level:
+    sn.recozai: DEBUG

@@ -1,0 +1,20 @@
+# Database only, for running the backend from the IDE/Maven with the `local` profile.
+name: recozai-local
+services:
+  db:
+    image: postgres:18.6-alpine@sha256:123b17998ccaf47e53b502e8c6a1e79afd8f579c6f3eec83c563da026f957395
+    environment:
+      POSTGRES_DB: recozai
+      POSTGRES_USER: recozai
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set via scripts/run-local.sh}
+    ports:
+      - "127.0.0.1:${LOCAL_DB_PORT:-5433}:5432"
+    volumes:
+      - database:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U recozai -d recozai"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+volumes:
+  database:

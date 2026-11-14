@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: recozai
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+  mvc:
+    log-request-details: false
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 21MB
+server:
+  address: ${BIND_ADDRESS:127.0.0.1}
+  port: ${PORT:8080}
+  error:
+    include-message: never
+    include-stacktrace: never
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+springdoc:
+  api-docs:
+    path: /api/v1/openapi
+app:
+  stage: ${APP_STAGE:development}
+  security-epoch: ${SECURITY_EPOCH}
+  restore-gate: ${RESTORE_GATE:CLOSED}
+  secure-cookies: ${SECURE_COOKIES:true}
+  custodian-public-key: ${CUSTODIAN_PUBLIC_KEY:}
+logging:
+  level:
+    org.hibernate.engine.jdbc.spi.SqlExceptionHelper: OFF
+    org.hibernate.orm.jdbc.error: OFF

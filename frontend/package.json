@@ -1,0 +1,41 @@
+{
+  "name": "frontend",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve --host 127.0.0.1 --proxy-config proxy.conf.json",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test --watch=false",
+    "test:e2e": "playwright test"
+  },
+  "private": true,
+  "packageManager": "npm@11.19.1",
+  "engines": {
+    "node": "24.22.2"
+  },
+  "dependencies": {
+    "@angular/cdk": "22.2.5",
+    "@angular/common": "22.2.5",
+    "@angular/compiler": "22.2.5",
+    "@angular/core": "22.2.5",
+    "@angular/forms": "22.2.5",
+    "@angular/platform-browser": "22.2.5",
+    "@angular/router": "22.2.5",
+    "@ngx-translate/core": "18.1.0",
+    "@primeuix/themes": "3.1.1",
+    "primeng": "22.1.5",
+    "rxjs": "7.8.2",
+    "tslib": "2.8.1"
+  },
+  "devDependencies": {
+    "@angular/build": "22.2.6",
+    "@angular/cli": "22.2.6",
+    "@angular/compiler-cli": "22.2.5",
+    "@playwright/test": "1.65.0",
+    "jsdom": "30.0.0",
+    "prettier": "3.8.1",
+    "typescript": "6.0.2",
+    "vitest": "5.0.0"
+  }
+}
